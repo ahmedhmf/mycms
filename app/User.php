@@ -45,12 +45,20 @@ class User extends Authenticatable
       return $this->belongsToMany('App\Role');
     }
 
+    public function posts(){
+      return $this->hasMany('App\Post');
+    }
+
     public function hasAnyRole($roles){
       return null !== $this->roles()->whereIn('name',$roles)->first();
     }
 
     public function hasRole($role){
       return null !== $this->roles()->where('name','=',$role)->first();
+    }
+
+    public function isAdminOrEditor(){
+      return $this->hasAnyRole(['admin','editor']);
     }
 
 }

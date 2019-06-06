@@ -33,48 +33,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                      <li>
+                        <a href="/blog" class="nav-link">Blog</a>
+                      </li>
 
+                      @include('partials.nav')
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                          <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login</a></li>
+                          <li><a class="nav-link" href="{{route('register')}}">Register</a></li>
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Pages <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('pages.index') }}">
-                                  Page List
-                                </a>
-                                <a class="dropdown-item" href="{{ route('pages.create') }}">
-                                  Create New
-                                </a>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Blog posts <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('blog.index') }}">
-                                  Post List
-                                </a>
-                                <a class="dropdown-item" href="{{ route('blog.create') }}">
-                                  Create New
-                                </a>
-                            </div>
-                        </li>
-                        @can('manageUsers', App\User::class)
-                        <li>
-                          <a href="{{route('users.index')}}" class="nav-link">Manage Users</a>
-                        </li>
-                        @endcan
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

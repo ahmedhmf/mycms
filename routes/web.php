@@ -11,16 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', function(){
-  return "you are an admin or editor";
+  return view('admin.index');
 })->middleware('admin');
 
-Route::resource('admin/pages', 'Admin\PagesController')->middleware('admin');
+Route::resource('admin/pages', 'Admin\PagesController', ['except'=>['show']]);
+Route::resource('admin/users', 'Admin\UsersController', ['except'=>['show']]);
+Route::resource('admin/blog', 'Admin\BlogController', ['except'=>['show']]);
+Route::get('/blog', 'BlogPostController@index')->name('blog');

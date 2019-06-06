@@ -20,28 +20,6 @@
   <input type="text" class="form-control" name="uri" value="{{$modal->uri}}" id="uri">
 </div>
 
-<div class="form-group row">
-  <div class="col-md-12">
-    <label>Order</label>
-  </div>
-  <div class="col-md-2">
-    <select class="form-control" name="order">
-      <option value=""></option>
-      <option value="before">Before</option>
-      <option value="after">After</option>
-      <option value="child">Child</option>
-    </select>
-  </div>
-  <div class="col-md-5">
-    <select class="form-control" name="orderPage">
-      <option value=""></option>
-      @foreach($orderPages as $page)
-        <option value="{{$page->id}}">{{$page->title}}</option>
-      @endforeach
-    </select>
-  </div>
-</div>
-
 <div class="form-group">
   <label for="content">Content</label>
   <textarea name="content" rows="8" cols="80" class="form-control" id="content">{{$modal->content}}</textarea>
